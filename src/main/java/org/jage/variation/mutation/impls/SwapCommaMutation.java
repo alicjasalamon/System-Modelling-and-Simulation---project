@@ -5,10 +5,14 @@ import it.unimi.dsi.fastutil.booleans.BooleanList;
 import java.util.Random;
 
 import org.jage.solution.IVectorSolution;
-import org.jage.variation.mutation.binary.ICommaMutation;
+import org.jage.variation.mutation.binary.CommaMutation;
 
-public class SwapCommaMutation implements ICommaMutation{
+public class SwapCommaMutation extends CommaMutation{
 	
+	public SwapCommaMutation(int distance) {
+		super(distance);
+	}
+
 	Random rand = new Random(System.currentTimeMillis());
 
 	@Override

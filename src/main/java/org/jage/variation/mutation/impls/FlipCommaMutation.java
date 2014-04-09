@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Random;
 
 import org.jage.solution.IVectorSolution;
-import org.jage.variation.mutation.binary.ICommaMutation;
+import org.jage.variation.mutation.binary.CommaMutation;
 
-public class FlipCommaMutation implements ICommaMutation {
+public class FlipCommaMutation extends CommaMutation {
+
+	public FlipCommaMutation(int distance) {
+		super(distance);
+	}
 
 	Random rand = new Random(System.currentTimeMillis());
 

@@ -50,32 +50,33 @@ import org.jage.variation.mutation.impls.SwapCommaMutation;
 public final class LABSMutate extends AbstractStrategy implements
 		IMutateSolution<IVectorSolution<Boolean>> {
 	
-	ICommaMutation mutations[];
+	CommaMutation mutations[];
 	int distance = 1;
 	Random rand = new Random();
 	
 	public LABSMutate() {
 		super();
-		mutations = new ICommaMutation[4];
-		mutations[0] = new SwapCommaMutation();
-		mutations[1] = new FlipCommaMutation();
-		mutations[2] = new InvertCommaMutation();
-		mutations[3] = new SwapCommaMutation();
+		mutations = new CommaMutation[4];
+		mutations[0] = new SwapCommaMutation(1);
+		mutations[1] = new FlipCommaMutation(1);
+		mutations[2] = new InvertCommaMutation(1);
+		mutations[3] = new SwapCommaMutation(1);
 	}
 	
 	@Override
 	public void mutateSolution(IVectorSolution<Boolean> solution) {
 
 		BooleanList representation = (BooleanList) solution.getRepresentation();
-		System.out.println(representation);
-		determineMutation().doMutate(solution, distance);
+		determineMutation().doMutate(solution, 2);
 	}
 
-	private ICommaMutation determineMutation() {
+	private CommaMutation determineMutation() {
 
 		int x = rand.nextInt(4);
 		distance = rand.nextInt(5);
 		return mutations[x];
 		
 	}
+	
+	
 }
