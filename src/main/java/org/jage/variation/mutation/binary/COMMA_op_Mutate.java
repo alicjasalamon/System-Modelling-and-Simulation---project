@@ -85,7 +85,7 @@ public class COMMA_op_Mutate extends AbstractStrategy implements
 	{
 		Collections.sort(operatorSelectionScale, new Comparator<CommaMutation>() {
 		    public int compare(CommaMutation a, CommaMutation b) {
-		        return (int) (a.diversityMark - b.diversityMark);
+		        return (int) (b.diversityMark - a.diversityMark);
 		    }
 		});
 	}

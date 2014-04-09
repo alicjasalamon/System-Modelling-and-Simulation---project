@@ -80,6 +80,7 @@ public final class IndividuallyMutatePopulation<S extends ISolution> extends Abs
 	public void mutatePopulation(final IPopulation<S, ?> population) {
 	
 		//TODO: posortowac populacje
+		//znalezc
 		for (final S solution : population) {
 			if (rand.nextDouble() < chanceToMutate) {
 				mutate.mutateSolution(solution);
