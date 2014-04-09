@@ -31,9 +31,15 @@
 
 package org.jage.variation.mutation.binary;
 
+import it.unimi.dsi.fastutil.booleans.BooleanList;
+
+import java.util.Random;
+
 import org.jage.solution.IVectorSolution;
 import org.jage.strategy.AbstractStrategy;
 import org.jage.variation.mutation.IMutateSolution;
+import org.jage.variation.mutation.impls.FlipCommaMutation;
+import org.jage.variation.mutation.impls.InvertCommaMutation;
 import org.jage.variation.mutation.impls.SwapCommaMutation;
 
 /**
@@ -45,25 +51,31 @@ public final class LABSMutate extends AbstractStrategy implements
 		IMutateSolution<IVectorSolution<Boolean>> {
 	
 	ICommaMutation mutations[];
+	int distance = 1;
+	Random rand = new Random();
 	
 	public LABSMutate() {
 		super();
-		mutations = new ICommaMutation[1];
+		mutations = new ICommaMutation[4];
 		mutations[0] = new SwapCommaMutation();
-		
-//		mutations.add(e);
-//		mutations.add(e);
-//		mutations.add(e);	
+		mutations[1] = new FlipCommaMutation();
+		mutations[2] = new InvertCommaMutation();
+		mutations[3] = new SwapCommaMutation();
 	}
 	
 	@Override
 	public void mutateSolution(IVectorSolution<Boolean> solution) {
-		determineMutation().doMutate(solution, 1);
+
+		BooleanList representation = (BooleanList) solution.getRepresentation();
+		System.out.println(representation);
+		determineMutation().doMutate(solution, distance);
 	}
 
 	private ICommaMutation determineMutation() {
-		// TODO ustawianie pola mutation 
-		return mutations[0];
+
+		int x = rand.nextInt(4);
+		distance = rand.nextInt(5);
+		return mutations[x];
 		
 	}
 }

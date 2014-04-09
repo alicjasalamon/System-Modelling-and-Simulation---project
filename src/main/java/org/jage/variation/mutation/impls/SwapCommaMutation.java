@@ -7,7 +7,7 @@ import java.util.Random;
 import org.jage.solution.IVectorSolution;
 import org.jage.variation.mutation.binary.ICommaMutation;
 
-public class SwapCommaMutation extends ICommaMutation{
+public class SwapCommaMutation implements ICommaMutation{
 	
 	Random rand = new Random(System.currentTimeMillis());
 

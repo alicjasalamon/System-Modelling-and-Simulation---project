@@ -25,7 +25,7 @@
 			
 			<strategy class="org.jage.evaluation.binary.LABSEvaluator" /> <!-- podmienic -->
 			<strategy class="org.jage.problem.binary.LABSProblem">
-				<constructor-arg type="Integer" value="10"/>
+				<constructor-arg type="Integer" value="${problem.size}"/>
 			</strategy>
 
 			<strategy name="rand" class="org.jage.random.SimpleGenerator">
