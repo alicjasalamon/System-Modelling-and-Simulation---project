@@ -54,7 +54,7 @@ public class COMMA_op_Mutate extends AbstractStrategy implements
 	{
 		/*
 		 * to bedzie podane z gory
-		 * jakos to trzeba odczytaæ
+		 * jakos to trzeba odczytaÄ‡
 		 */
 		double gen=50, maxGen=100;
 		double rate = 1-(gen/(maxGen+1));
