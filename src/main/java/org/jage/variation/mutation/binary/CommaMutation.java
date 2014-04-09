@@ -7,7 +7,7 @@ public abstract class CommaMutation {
 	public int distance;
 	public double diversityMark;
 	public boolean fixedDistance;
-	public CommaMutation(int distance, double diversityMark) {
+	public CommaMutation(int distance, double diversityMark ) {
 		this.distance = distance;
 		this.diversityMark = diversityMark;
 		fixedDistance = true;

@@ -56,11 +56,12 @@ public final class LABSMutate extends AbstractStrategy implements
 	
 	public LABSMutate() {
 		super();
+		
 		mutations = new CommaMutation[4];
-		mutations[0] = new SwapCommaMutation(1);
-		mutations[1] = new FlipCommaMutation(1);
-		mutations[2] = new InvertCommaMutation(1);
-		mutations[3] = new SwapCommaMutation(1);
+		mutations[0] = new SwapCommaMutation(1, 0.5);
+		mutations[1] = new FlipCommaMutation(1, 0.5);
+		mutations[2] = new InvertCommaMutation(1, 0.5);
+		mutations[3] = new SwapCommaMutation(1, 0.5);
 	}
 	
 	@Override
