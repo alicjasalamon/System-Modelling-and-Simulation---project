@@ -67,7 +67,7 @@ public final class LABSMutate extends AbstractStrategy implements
 	@Override
 	public void mutateSolution(IVectorSolution<Boolean> solution) {
 
-		determineMutation().doMutate(solution, 2);
+		determineMutation().doMutate(solution, distance);
 	}
 
 	private CommaMutation determineMutation() {
