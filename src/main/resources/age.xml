@@ -23,7 +23,7 @@
 
 			<strategy name="populationEvaluator" class="org.jage.evaluation.SequentialPopulationEvaluator" />
 			
-			<strategy class="org.jage.evaluation.binary.LABSEvaluator" /> <!-- podmienic -->
+			<strategy class="org.jage.evaluation.binary.LABSEvaluator" />
 			<strategy class="org.jage.problem.binary.LABSProblem">
 				<constructor-arg type="Integer" value="${problem.size}"/>
 			</strategy>
@@ -49,9 +49,11 @@
 					<property name="chanceToRecombine" type="Double" value="${individual.chanceToRecombine}"/>
 					<strategy name="recombineSolution" class="org.jage.variation.recombination.binary.BinaryOnePointRecombine" />
 				</strategy>
-				<!-- zmienic -->
+				<!-- 
+				<strategy name="mutatePopulation" class="org.jage.variation.mutation.COMMAMutatePopulation">-->
 				<strategy name="mutatePopulation" class="org.jage.variation.mutation.IndividuallyMutatePopulation">
-					<property name="chanceToMutate" type="Double" value="${individual.chanceToMutate}"/>
+					<property name="chanceToMutate" type="Double" value="${individual.chanceToMutate}"/> <!-- skasowac -->
+					<!-- <strategy name="mutateSolution" class="org.jage.variation.mutation.binary.COMMA_op_Mutate"> -->
 					<strategy name="mutateSolution" class="org.jage.variation.mutation.binary.LABSMutate">
 					</strategy>
 				</strategy>

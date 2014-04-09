@@ -1,8 +1,5 @@
 package org.jage.variation.mutation;
 
-import java.util.Collections;
-import java.util.Comparator;
-
 import javax.inject.Inject;
 
 import org.jage.population.IPopulation;
@@ -23,15 +20,9 @@ public final class COMMAMutatePopulation<S extends ISolution> extends AbstractSt
 		//znalezc maxGen, gen, fixedDistancOe
 		//jak wziac fitness z solutiona
 		
-		
 		//pozycje daloby sie wziac z populacji
 		for (final S solution : population) {
-			population.getEvaluation(solution);
-			{
-				
-			}
-				
-				mutate.mutateSolution(solution);
+			mutate.mutateSolution(solution);
 		}
 	}
 }
