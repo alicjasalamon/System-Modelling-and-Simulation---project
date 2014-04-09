@@ -9,8 +9,8 @@ import org.jage.variation.mutation.binary.CommaMutation;
 
 public class ShiftCommaMutation extends CommaMutation {
 
-	public ShiftCommaMutation(int distance) {
-		super(distance);
+	public ShiftCommaMutation(int distance, double diversityMark) {
+		super(distance, diversityMark);
 	}
 
 	Random rand = new Random(System.currentTimeMillis());

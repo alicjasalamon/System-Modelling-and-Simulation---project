@@ -25,21 +25,15 @@ public class COMMA_op_Mutate extends AbstractStrategy implements
 		
 		operatorSelectionScale = new ArrayList<CommaMutation>();
 		
-		operatorSelectionScale.add(new SwapCommaMutation(1));
-		operatorSelectionScale.add(new FlipCommaMutation(1));
-		operatorSelectionScale.add(new InvertCommaMutation(1));
-		operatorSelectionScale.add(new SwapCommaMutation(1));
-		
-		operatorSelectionScale.add(new SwapCommaMutation(2));
-		operatorSelectionScale.add(new FlipCommaMutation(2));
-		operatorSelectionScale.add(new InvertCommaMutation(2));
-		operatorSelectionScale.add(new SwapCommaMutation(2));
-		
-		operatorSelectionScale.add(new SwapCommaMutation(3));
-		operatorSelectionScale.add(new FlipCommaMutation(3));
-		operatorSelectionScale.add(new InvertCommaMutation(3));
-		operatorSelectionScale.add(new SwapCommaMutation(3));
-		
+		for(double diversityMark = 0.1; diversityMark < 0.9; diversityMark += 0.1) {
+			for(int distance = 1; distance < 3; ++distance) {
+				operatorSelectionScale.add(new SwapCommaMutation(distance, diversityMark));
+				operatorSelectionScale.add(new FlipCommaMutation(distance, diversityMark));
+				operatorSelectionScale.add(new InvertCommaMutation(distance, diversityMark));
+				operatorSelectionScale.add(new SwapCommaMutation(distance, diversityMark));
+			}
+		}
+				
 		sortScale();
 		
 	}

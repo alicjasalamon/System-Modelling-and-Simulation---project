@@ -11,8 +11,8 @@ import org.jage.variation.mutation.binary.CommaMutation;
 
 public class FlipCommaMutation extends CommaMutation {
 
-	public FlipCommaMutation(int distance) {
-		super(distance);
+	public FlipCommaMutation(int distance, double diversityMark) {
+		super(distance, diversityMark);
 	}
 
 	Random rand = new Random(System.currentTimeMillis());
