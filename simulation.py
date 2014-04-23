@@ -20,8 +20,11 @@ def execProgram(size):
 	for line in os.popen('mvn -q exec:java').readlines():
 		if 'Best solution ever' in line:
 			offset = len('best solution ever(evaluation =   ')
-			print str(size) + '\t' + line[offset:offset+4]
+			fitness = line[offset:offset+4]
+			step = re.sub('[\)\:]', '', line[offset+16:offset+21])
+			print str(size) + '\t' + fitness + '\t' + step
 			
 for size in sizes:
 	saveFile(size)
+	print 'size\tfitness\tstep'
 	execProgram(size)

@@ -43,7 +43,7 @@ public class OperatorsScale {
 		Collections.sort(operatorSelectionScale,
 				new Comparator<CommaMutation>() {
 					public int compare(CommaMutation a, CommaMutation b) {
-						return (int) (b.diversityMark - a.diversityMark);
+						return (int) -(b.diversityMark - a.diversityMark);
 					}
 				});
 	}
