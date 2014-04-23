@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<configuration xmlns="http://age.iisg.agh.edu.pl/schema/age"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://age.iisg.agh.edu.pl/schema/age http://age.iisg.agh.edu.pl/schema/age/age.xsd">
+<configuration xmlns="http://age.iisg.agh.edu.pl/schema/age" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://age.iisg.agh.edu.pl/schema/age http://age.iisg.agh.edu.pl/schema/age/age.xsd">
 
 	<include file="classpath:base.xml">
 		<block name="workplaces">
@@ -22,14 +20,14 @@
 			<strategy name="solutionFactory" class="org.jage.solution.binary.BinarySolutionFactory" />
 
 			<strategy name="populationEvaluator" class="org.jage.evaluation.SequentialPopulationEvaluator" />
-			
-			<strategy class="org.jage.evaluation.binary.LABSEvaluator" />
-			<strategy class="org.jage.problem.binary.LABSProblem">
-				<constructor-arg type="Integer" value="${problem.size}"/>
+
+			<strategy class="labs.LABSEvaluator" />
+			<strategy class="labs.LABSProblem">
+				<constructor-arg type="Integer" value="${problem.size}" />
 			</strategy>
 
 			<strategy name="rand" class="org.jage.random.SimpleGenerator">
-				<constructor-arg type="Long" value="234567890"/>
+				<constructor-arg type="Long" value="234567890" />
 			</strategy>
 
 			<strategy name="geneticActionPreparator" class="org.jage.genetic.action.GeneticActionPreparator" />
@@ -46,16 +44,16 @@
 
 			<strategy name="variation" class="org.jage.variation.VariationOperator">
 				<strategy name="recombinePopulation" class="org.jage.variation.recombination.PairedRecombinePopulation">
-					<property name="chanceToRecombine" type="Double" value="${individual.chanceToRecombine}"/>
+					<property name="chanceToRecombine" type="Double" value="${individual.chanceToRecombine}" />
 					<strategy name="recombineSolution" class="org.jage.variation.recombination.binary.BinaryOnePointRecombine" />
 				</strategy>
-				<!-- 
-				<strategy name="mutatePopulation" class="org.jage.variation.mutation.COMMAMutatePopulation">-->
-				<strategy name="mutatePopulation" class="org.jage.variation.mutation.IndividuallyMutatePopulation">
-					<property name="chanceToMutate" type="Double" value="${individual.chanceToMutate}"/> <!-- skasowac -->
-					<!-- <strategy name="mutateSolution" class="org.jage.variation.mutation.binary.COMMA_op_Mutate"> -->
-					<strategy name="mutateSolution" class="org.jage.variation.mutation.binary.LABSMutate">
-					</strategy>
+
+
+				<strategy name="mutatePopulation" class="comma.COMMAMutatePopulation">
+					<strategy name="mutateSolution" class="comma.COMMAMutateSolution"></strategy>
+					<property name="MAXGEN" type="Integer" value="${steps}" />
+					<property name="agents" type="Integer" value="${population.size}" />
+					<property name="fixedDistance" type="Boolean" value="true"></property>
 				</strategy>
 			</strategy>
 		</block>

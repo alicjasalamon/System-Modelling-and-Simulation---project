@@ -1,4 +1,4 @@
-package org.jage.problem.binary;
+package labs;
 
 import org.jage.problem.binary.BinaryProblem;
 

@@ -1,11 +1,12 @@
-package org.jage.variation.mutation.impls;
+package comma.impls;
 
 import it.unimi.dsi.fastutil.booleans.BooleanList;
 
 import java.util.Random;
 
 import org.jage.solution.IVectorSolution;
-import org.jage.variation.mutation.binary.CommaMutation;
+
+import comma.CommaMutation;
 
 public class InvertCommaMutation extends CommaMutation{
 

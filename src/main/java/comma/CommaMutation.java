@@ -1,4 +1,4 @@
-package org.jage.variation.mutation.binary;
+package comma;
 
 import org.jage.solution.IVectorSolution;
 

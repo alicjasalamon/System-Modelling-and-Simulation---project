@@ -1,4 +1,4 @@
-package org.jage.evaluation.binary;
+package labs;
 
 import it.unimi.dsi.fastutil.booleans.BooleanList;
 
