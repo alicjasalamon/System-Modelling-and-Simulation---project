@@ -19,7 +19,8 @@ def saveFile(size):
 def execProgram(size):
 	for line in os.popen('mvn -q exec:java').readlines():
 		if 'Best solution ever' in line:
-			print 'Solution size[' + str(size) + '] = \n\t' + line;
+			offset = len('best solution ever(evaluation =   ')
+			print str(size) + '\t' + line[offset:offset+4]
 			
 for size in sizes:
 	saveFile(size)
