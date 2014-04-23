@@ -24,7 +24,7 @@ def execProgram(size):
 			step = re.sub('[\)\:]', '', line[offset+16:offset+21])
 			print str(size) + '\t' + fitness + '\t' + step
 			
+print 'size\tfitness\tstep'
 for size in sizes:
 	saveFile(size)
-	print 'size\tfitness\tstep'
 	execProgram(size)
