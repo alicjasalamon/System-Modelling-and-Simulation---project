@@ -4,8 +4,7 @@ from subprocess import *
 import os
 import re
 
-#sizes = [81, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 141, 161, 181, 201]
-sizes = [3, 100]
+sizes = [81, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 141, 161, 181, 201]
 def saveFile(size):
 	lines = []
 	for line in fileinput.input('src/main/resources/age.properties', inplace=1):
