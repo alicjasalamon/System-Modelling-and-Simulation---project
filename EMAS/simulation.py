@@ -9,6 +9,7 @@ from time import gmtime, strftime
 '''========================================================
 =					  CONFIGURATION					      =
 ========================================================'''
+#tu jest cala dokumentacja
 STEPS = 1000
 PROBLEM_SIZES = [81, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 141, 161, 181, 201]
 ISLANDS_NUMBERS = [5]
@@ -27,7 +28,7 @@ PRINT_SOLUTION_IN_NEW_LINE = True
 
 PRINT_TO_CONSOLE = True
 PRINT_TO_FILE = True
-FILE_DIRECTORY = '.'
+FILE_DIRECTORY = 'outputs' #default: 	'.'
 FILENAME_APPEND_DATE = True
 
 RANDOMIZE_SEED = True
@@ -43,7 +44,7 @@ def createAgeProperties(problemSize, islandsNumber, islandsSize):
 		"islands.size=" + str(islandsSize),
 		"individual.chanceToMigrate=" + str(INDIVIDUAL_CHANCE_TO_MIGRATE),
 		"feature.chanceToMutate=" + str(FEATURE_CHANCE_TO_MUTATE),
-		"feature.mutationRange" + str(FEATURE_MUTATION_RANGE)
+		"feature.mutationRange=" + str(FEATURE_MUTATION_RANGE)
 	]
 	f = open('src/main/resources/age.properties', 'w')
 	for line in lines:
@@ -69,6 +70,7 @@ def createAgeXml():
 
 def getOutputs(problemSize, islandsNumber, islandsSize):
 	outputs = []
+	os.popen('mvn compile').readlines()
 	for line in os.popen('mvn -q exec:java').readlines():
 		if 'Best solution ever' in line:
 			fitness = re.search('evaluation = ([0-9]+,[0-9]+)', line).group(1)

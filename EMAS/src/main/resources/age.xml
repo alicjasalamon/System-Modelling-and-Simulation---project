@@ -90,7 +90,7 @@
 	<block name="workplaceComponents" override="false">
 		<!-- Global Strategies -->
 		<strategy name="rand" class="org.jage.random.SimpleGenerator" >
-			<constructor-arg type="Long" value="146867871"/>
+			<constructor-arg type="Long" value="654652602"/>
 		</strategy>
 
 		<strategy name="solutionEvaluator" class="labs.LABSEvaluator" />

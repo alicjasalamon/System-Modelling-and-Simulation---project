@@ -1,0 +1,11 @@
+*.classpath
+EMAS/bin/pom.xml
+*.class
+EMAS/outputs/*
+EMAS/bin/src/etc/license.txt
+*.project
+EMAS/bin/*
+*.launch
+EMAS/target/classes/*
+EMAS/src/main/config/emas-app.launch
+EMAS/target/classes/age.properties
