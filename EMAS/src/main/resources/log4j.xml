@@ -11,7 +11,7 @@
 	</appender>
 
 	<logger name="org.jage.emas">
-    	<level value="info"/>
+    	<level value="debug"/>
   	</logger>
 
   	<logger name="org.jage.agent">
@@ -19,7 +19,7 @@
   	</logger>
 
   	<logger name="org.jage.action">
-    	<level value="info"/>
+    	<level value="debug"/>
   	</logger>
 
 	<root>

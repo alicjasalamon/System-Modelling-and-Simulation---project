@@ -9,3 +9,5 @@ EMAS/bin/*
 EMAS/target/classes/*
 EMAS/src/main/config/emas-app.launch
 EMAS/target/classes/age.properties
+EMAS/target/classes/age.properties
+target

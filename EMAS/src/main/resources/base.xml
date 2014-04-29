@@ -28,7 +28,7 @@
 
 		<block name="stopCondition" >
 			<component name="stopCondition" class="org.jage.workplace.FixedStepCountStopCondition">
-				<constructor-arg type="Long" value="1000" />
+				<constructor-arg type="Long" value="${steps}" />
 			</component>
 		</block>
 	</component>

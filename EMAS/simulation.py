@@ -10,10 +10,10 @@ from time import gmtime, strftime
 =					  CONFIGURATION					      =
 ========================================================'''
 #tu jest cala dokumentacja
-STEPS = 1000
+STEPS = 5000
 PROBLEM_SIZES = [81, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 141, 161, 181, 201]
-ISLANDS_NUMBERS = [5]
-ISLANDS_SIZES = [40]
+ISLANDS_NUMBERS = [1]
+ISLANDS_SIZES = [200]
 INDIVIDUAL_CHANCE_TO_MIGRATE  = 0.001
 FEATURE_CHANCE_TO_MUTATE = 0.5
 FEATURE_MUTATION_RANGE = 0.025

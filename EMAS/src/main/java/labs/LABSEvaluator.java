@@ -28,6 +28,7 @@ public class LABSEvaluator implements
 			E += C * C;
 		
 		}
+		//System.out.println(L*L/(2*E));
 		return L*L/(2*E);
 	}
 
