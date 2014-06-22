@@ -1,6 +1,5 @@
 package labs;
 
-import it.unimi.dsi.fastutil.booleans.BooleanList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
 import org.jage.evaluation.ISolutionEvaluator;
@@ -11,8 +10,12 @@ public class LABSEvaluator implements
 
 	@Override
 	public Double evaluate(IVectorSolution<Double> solution) {
+		return LABSEvaluator.evaluateStatic(solution);
+	}
 
-		final DoubleList representation = (DoubleList) solution.getRepresentation();
+	public static Double evaluateStatic(IVectorSolution<Double> solution) {
+		final DoubleList representation = (DoubleList) solution
+				.getRepresentation();
 
 		double E = 0.0;
 		double C = 0.0;

@@ -9,7 +9,6 @@ from time import gmtime, strftime
 '''========================================================
 =					  CONFIGURATION					      =
 ========================================================'''
-#tu jest cala dokumentacja
 STEPS = 5000
 PROBLEM_SIZES = [81, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 141, 161, 181, 201]
 ISLANDS_NUMBERS = [1]
