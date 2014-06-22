@@ -33,11 +33,12 @@ public final class Ranking {
 		sort();
 	}
 	
+	//miejsce 0 				- najlepszy fitness
+	//miejsce agents.length-1 	- najgorszy fitness
 	public int getMiejsceWRankingu(double fitness) {
 		int i = 0;
-		
-		while(i < agents.length && fitness < this.agents[i].getEffectiveFitness()) ++i;
-		return i;
+		while(i < agents.length && fitness > this.agents[i].getEffectiveFitness()) ++i;
+		return agents.length - i - 1;
 	}
 
 	public void printRanking() {

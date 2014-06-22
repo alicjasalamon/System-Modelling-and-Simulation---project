@@ -31,7 +31,8 @@
 
 package org.jage.emas.reproduction;
 
-import java.awt.RadialGradientPaint;
+import java.util.Map.Entry;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -42,9 +43,14 @@ import org.jage.platform.component.provider.IComponentInstanceProviderAware;
 import org.jage.random.INormalizedDoubleRandomGenerator;
 import org.jage.solution.ISolution;
 import org.jage.solution.ISolutionFactory;
+import org.jage.solution.IVectorSolution;
 import org.jage.variation.mutation.IMutateSolution;
 import org.jage.variation.recombination.IRecombine;
 
+import comma.COMMAMutateSolution;
+import comma.CommaMutation;
+import comma.OperatorsScale;
+import comma.Parameters;
 import ranking.Ranking;
 
 /**
@@ -85,7 +91,7 @@ public class DefaultSexualReproduction implements SexualReproduction<IndividualA
 		transferEnergy(firstParent, secondParent, child);
 		return child;
 	}
-
+	
 	private ISolution createGamete(final IndividualAgent first, final IndividualAgent second) {
 		final ISolution firstGamete = solutionFactory.copySolution(first.getSolution());
 		final ISolution secondGamete = solutionFactory.copySolution(second.getSolution());
@@ -93,11 +99,45 @@ public class DefaultSexualReproduction implements SexualReproduction<IndividualA
 
 		// choose one at random
 		final ISolution gamete = rand.nextDouble() <= 0.5 ? firstGamete : secondGamete;
-		double fit = gamete.getRepresentation();
-		int miejsceWrankingu = Ranking.getInstance().getMiejsceWRankingu(fit);
-		mutation.mutateSolution(gamete);
-
+		double fit = evaluator.evaluate(gamete);
+		
+		boolean fixedDistance = Parameters.getInstance().isFixedDistance();
+		int currentGen = Parameters.getInstance().getCurrentGen();
+		int maxGen = Parameters.getInstance().getMaxGen();
+		int agents = Parameters.getInstance().getAgents();
+		int r = Ranking.getInstance().getMiejsceWRankingu(fit);
+		//System.out.println("Mutating " + "gen:" + currentGen + "/" + maxGen + " rank:" + r);
+		mutateCOMMA(gamete, fixedDistance, currentGen, maxGen, agents, r);
+		
 		return gamete;
+	}
+	
+	private COMMAMutateSolution commaMutateSolution = new COMMAMutateSolution();
+	private OperatorsScale operatorsScale = new OperatorsScale();
+	private Random random = new Random();
+	
+	private void mutateCOMMA(ISolution solution, boolean fixedDistance, int currentGen, int maxGen, int agents, int r) {
+		int alpha = operatorsScale.size();
+		double rate = 1 - (1.0*currentGen/(maxGen+1));
+		
+		int r_lower = (int) Math.max(0, (1.0*r*alpha/agents) - rate * alpha);
+		int r_upper = (int) Math.min(alpha-1, (1.0 * r*alpha/agents) + rate * alpha);
+		
+		int r_op = r_lower == r_upper ? r_lower: random.nextInt(r_upper-r_lower)+r_lower;
+		
+		CommaMutation commaMutation = operatorsScale.getMutation(r_op);
+		
+		int distance;
+		if(fixedDistance)
+			distance = commaMutation.distance;
+		else
+			distance = random.nextInt(commaMutation.distance)+1;	
+		
+		
+		commaMutateSolution.prepare(commaMutation, distance);
+		//TODO: check if casting works
+		commaMutateSolution.mutateSolution((IVectorSolution<Double>) solution); 
+		r--;
 	}
 
 	private IndividualAgent createChild(final ISolution gamete) {

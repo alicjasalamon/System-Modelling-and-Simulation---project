@@ -33,6 +33,8 @@ import org.jage.agent.IAgent;
 import org.jage.emas.agent.DefaultIslandAgent;
 import org.jage.emas.util.ChainingAction;
 
+import comma.Parameters;
+
 import ranking.Ranking;
 
 /**
@@ -56,20 +58,25 @@ public final class StatisticsUpdateAction extends ChainingAction<DefaultIslandAg
 	@Override
 	public void doPerform(final DefaultIslandAgent agent) throws AgentException {
 		log.debug("Performing statistics update action on {}", agent);
-agent.getIndividualAgents().get(0).getEffectiveFitness();
+		//agent.getIndividualAgents().get(0).getEffectiveFitness();
 		if (LOG.isDebugEnabled()) {
 			LOG.debug(getChildrenLog(agent));
 		}
 
-		if ((agent.getStep() - 1) % resolution == 0) {
-			LOG.debug("Updating statistics of agent {}.", agent);
-
+		int step = (int) agent.getStep();
+		if(step > 0) {
 			agent.updateStatistics();
-			//	System.out.println(agent.getStep() + " " + agent.getAvgFitness() + " " + agent.getBestFitnessEver());
-			Ranking.getInstance().setRanking(agent.getIndividualAgents());
+			Ranking.getInstance().setRanking(agent.getIndividualAgents());		
+			Parameters.getInstance().setCurrentGen(step);
+			Parameters.getInstance().setAgents(agent.getIndividualAgents().size());
+		} else if (step == Parameters.getInstance().getMaxGen() - 1) {
 			Ranking.getInstance().printRanking();
 		}
 		
+		if ((agent.getStep() - 1) % resolution == 0) {
+			//Ranking.getInstance().printRanking();
+			//	System.out.println(agent.getStep() + " " + agent.getAvgFitness() + " " + agent.getBestFitnessEver());
+		}
 		
 	}
 
